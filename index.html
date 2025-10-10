@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>My Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <h1 class="logo">My Portfolio</h1>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="todo.html">To-Do</a>
+        <a href="products.html">Products</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h2>Hi — I'm Sadiya Farhad, a Frontend Developer</h2>
+      <p>I build responsive, accessible websites using HTML, CSS and JavaScript.</p>
+      <p><a class="btn" href="projects.html">See My Work</a></p>
+    </section>
+
+    <section class="about" id="about">
+      <h2>About Me</h2>
+      <div class="about-grid">
+        <div>
+          <h3>Skills</h3>
+          <ul>
+            <li>HTML & CSS</li>
+            <li>JavaScript (DOM, Fetch)</li>
+            <li>Responsive Design</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Experience</h3>
+          <p>Built multiple responsive web projects, small apps and interactive UI components.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <h2>Contact</h2>
+      <form id="contactForm" class="card">
+        <label>Name <input type="text" id="name" name="name" required></label>
+        <label>Email <input type="email" id="email" name="email" required></label>
+        <label>Message <textarea id="message" name="message" required></textarea></label>
+        <div class="form-row">
+          <button type="submit" class="btn">Send</button>
+          <button type="button" id="downloadContacts" class="btn secondary">Download Contacts (Excel)</button>
+          <button type="button" id="deleteContacts" class="btn danger">Delete All Contacts</button>
+        </div>
+        <p id="formMessage" class="muted"></p>
+      </form>
+
+      <h3>📋 Saved Contacts:</h3>
+      <ul id="contactList" class="saved-list"></ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">© 2025 Sadiya Farhad — Built with HTML, CSS & JavaScript</div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

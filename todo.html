@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>To-Do App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <h1 class="logo">To-Do App</h1>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="todo.html">To-Do</a>
+        <a href="products.html">Products</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="section">
+      <h2>To-Do List (LocalStorage)</h2>
+      <form id="taskForm" class="task-form">
+        <input id="newTask" placeholder="Add new task..." required />
+        <button id="addTask" class="btn">Add</button>
+        <button id="downloadTasks" type="button" class="btn secondary">Download Tasks (Excel)</button>
+      </form>
+      <ul id="taskList" class="task-list"></ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">© 2025 Alex</div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+  <script src="todo.js"></script>
+</body>
+</html>
