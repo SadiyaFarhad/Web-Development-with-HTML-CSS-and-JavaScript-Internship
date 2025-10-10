@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Post</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">← Back to Blog</a>
+      <button id="themeToggle">🌙</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <article id="postContent"></article>
+
+    <section class="comments-section">
+      <h3>💬 Comments</h3>
+      <ul id="commentList"></ul>
+
+      <form id="commentForm">
+        <input type="text" id="commentName" placeholder="Your name" required>
+        <textarea id="commentText" placeholder="Write a comment..." required></textarea>
+        <button type="submit" class="btn">Post Comment</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="posts.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const id = parseInt(params.get("id"));
+    const post = posts.find(p => p.id === id);
+
+    const postContent = document.getElementById("postContent");
+    postContent.innerHTML = `
+      <img src="${post.image}" alt="${post.title}" class="banner">
+      <h1>${post.title}</h1>
+      <p class="meta">${post.category} | ${new Date(post.date).toDateString()}</p>
+      <p>${post.content}</p>
+    `;
+
+    const commentForm = document.getElementById("commentForm");
+    const commentList = document.getElementById("commentList");
+    const storageKey = `comments_${id}`;
+
+    function loadComments() {
+      const comments = JSON.parse(localStorage.getItem(storageKey)) || [];
+      commentList.innerHTML = comments.map(c => `<li><strong>${c.name}</strong>: ${c.text}</li>`).join("");
+    }
+
+    commentForm.addEventListener("submit", e => {
+      e.preventDefault();
+      const name = commentForm.commentName.value.trim();
+      const text = commentForm.commentText.value.trim();
+
+      if (!name || !text) return;
+
+      const comments = JSON.parse(localStorage.getItem(storageKey)) || [];
+      comments.push({ name, text });
+      localStorage.setItem(storageKey, JSON.stringify(comments));
+
+      commentForm.reset();
+      loadComments();
+    });
+
+    loadComments();
+  </script>
+</body>
+</html>
